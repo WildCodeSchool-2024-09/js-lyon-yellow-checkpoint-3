@@ -10,9 +10,18 @@ import boatActions from "./modules/boat/boatActions";
 
 router.get("/api/boats", boatActions.browse);
 
+/* ************************************************************************* */
+
 import gameActions from "./modules/game/gameActions";
 
 router.post("/api/games", gameActions.add);
+
+/* ************************************************************************* */
+
+import tileActions from "./modules/tile/tileActions";
+
+router.get("/api/tiles", tileActions.browse);
+router.put("/api/tiles/:id", tileActions.validate, tileActions.edit);
 
 /* ************************************************************************* */
 
