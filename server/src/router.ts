@@ -11,6 +11,7 @@ import tileActions from "./modules/tile/tileActions";
 
 router.get("/api/boats", boatActions.browse);
 router.get("/api/tiles", tileActions.browse);
+router.put("./modules/tile/:id", tileActions.edit);
 
 import gameActions from "./modules/game/gameActions";
 
