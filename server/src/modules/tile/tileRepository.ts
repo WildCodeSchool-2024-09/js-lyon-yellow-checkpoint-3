@@ -22,9 +22,9 @@ class TileRepository {
   }
 
   async update(tile: Tile) {
-    // Execute the SQL UPDATE query to update an existing category in the "category" table
+    // Execute the SQL UPDATE query to update an existing tile in the "tile" table
     const [result] = await databaseClient.query<Result>(
-      "update tile SET name = ? where id = ?",
+      "update tile SET type = ? where id = ?",
       [tile.type, tile.id],
     );
 

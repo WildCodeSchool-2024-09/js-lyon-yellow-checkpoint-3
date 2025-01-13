@@ -14,12 +14,42 @@ const browse: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+const read: RequestHandler = async (req, res, next) => {
+  try {
+    // Fetch all boats from the database
+    const boatId = Number(req.params.id);
+
+    const boat = await boatRepository.read(boatId);
+
+    // Respond with the boats in JSON format
+    res.json(boat);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 const edit: RequestHandler = async (req, res, next) => {
   // your code here
+  try {
+    const editedBoat = {
+      id: Number(req.params.id),
+      coord_x: req.body.coord_x,
+      coord_y: req.body.coord_y,
+    };
+    const affectedRows = await boatRepository.update(editedBoat);
+    if (affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default {
   browse,
   edit,
+  read,
 };
