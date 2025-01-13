@@ -21,6 +21,16 @@ class TileRepository {
     return rows as Tile[];
   }
 
+  async update(tile: Tile) {
+    const [result] = await databaseClient.query<Result>(
+      "update category set name = ? where id = ?",
+      [tile.coord_x, tile.coord_y],
+    );
+
+    // Return how many rows were affected
+    return result.affectedRows;
+  }
+
   async readByCoordinates(coordX: number, coordY: number) {
     // your code here
   }
