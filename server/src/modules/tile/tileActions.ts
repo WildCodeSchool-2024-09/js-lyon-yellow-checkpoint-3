@@ -15,9 +15,24 @@ const browse: RequestHandler = async (req, res, next) => {
 };
 
 const validate: RequestHandler = async (req, res, next) => {
-  // your code here
+  type ValidationError = {
+    id: number;
+    coord_x: number;
+    coord_y: number;
+  };
+  try {
+    const { coord_x, coord_y } = req.body;
+    if (!Number.isInteger(coord_x) || !Number.isInteger(coord_y)) {
+      res.sendStatus(422);
+    } else if (coord_x < 0 || coord_x > 11 || coord_y < 0 || coord_y > 5) {
+      res.sendStatus(422);
+    } else {
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
 };
-
 export default {
   browse,
   validate,
