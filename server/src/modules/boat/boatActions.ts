@@ -29,7 +29,7 @@ const edit: RequestHandler = async (req, res, next) => {
     if (affectedRows === 0) {
       res.sendStatus(404);
     } else {
-      res.sendStatus(204).json(affectedRows);
+      res.sendStatus(204);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware

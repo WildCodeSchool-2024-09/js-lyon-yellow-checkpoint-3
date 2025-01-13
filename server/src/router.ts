@@ -17,8 +17,7 @@ router.get("/api/tiles", tileActions.browse);
 
 import gameActions from "./modules/game/gameActions";
 
-router.post("/api/games", gameActions.add);
-
+router.post("/api/games", tileActions.validate, gameActions.add);
 
 /* ************************************************************************* */
 
