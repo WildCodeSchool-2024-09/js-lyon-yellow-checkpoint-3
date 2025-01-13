@@ -20,7 +20,6 @@ const edit: RequestHandler = async (req, res, next) => {
     // Update a specific livre based on the provided ID
     const boat = {
       id: Number(req.params.id),
-      name: req.body.name,
       coord_x: req.body.coord_x,
       coord_y: req.body.coord_y,
     };
