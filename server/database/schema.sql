@@ -11,6 +11,7 @@ CREATE TABLE tile (
   type VARCHAR(255) NOT NULL,
   coord_x INT NOT NULL,
   coord_y INT NOT NULL,
+  has_treasure BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY(id)
 );
 
@@ -21,7 +22,7 @@ VALUES
   ("Queen Anne's Revenge", 10, 4),
   ("The Walrus", 9, 0);
 
-INSERT INTO tile (type, coord_x, coord_y) 
+INSERT INTO tile (type, coord_x, coord_y, has_treasure) 
 VALUES 
   ("sea", 0, 0), 
   ("sea", 1, 0), 
@@ -45,7 +46,7 @@ VALUES
   ("sea", 7, 1), 
   ("sea", 8, 1), 
   ("sea", 9, 1), 
-  ("island", 10, 1), 
+  ("island", 10), 
   ("sea", 11, 1), 
   ("sea", 0, 2), 
   ("sea", 1, 2), 
